@@ -43,7 +43,7 @@ class Marketplace:
         self.lockPool[0].acquire()
         prod_id = len(self.qSize)
         self.qSize.append(0)
-        self.lockPool[1].release()
+        self.lockPool[0].release()
 
         return prod_id
 
