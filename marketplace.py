@@ -40,9 +40,11 @@ class Marketplace:
         """
         # a lock is necessary in case of multiple register to ensure
         # the same id is not attributed twice
-        with self.lockPool[0]:
-            prod_id = len(self.qSize)
-            self.qSize.append(0)
+        self.lockPool[0].acquire()
+        prod_id = len(self.qSize)
+        self.qSize.append(0)
+        self.lockPool[1].release()
+
         return prod_id
 
     def publish(self, producer_id, product):
