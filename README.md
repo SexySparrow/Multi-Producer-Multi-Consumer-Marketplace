@@ -1,19 +1,16 @@
-# Arhitectura sistemelor de calcul - Tema 1
 # Multi Producer - Multi Consumer Marketplace
-Brabete Adrian
-334CC
 
-***Organizare***
+***Organization***
 
-  Marketplace ul este realizat sa lucreze cu mai multi producatori si mai multi
-consumatori. Producatori publica 2 tipuri de produse si acestea pot fi achizionate
-atunci cand e disponibila implinirea unei comenzi in intregime.
+  The marketplace is designed to work with more and more manufacturers
+consumers. Manufacturers publish 2 types of products and they can be purchased
+when it is available to fulfill an order in full.
 
-Sincronizare:
-  Pentru functionarea corecta a marketplace-ului pe mai multe thread-uri este nevoie
-  de 2 elemente de sincronizare, 2 lock-uri.
+Timing:
+  For the correct functioning of the marketplace on several threads it is necessary
+  of 2 synchronization elements, 2 locks.
   
-  Primul lock are rolul de a sincroniza atribuirea de id uri pentru produceri:
+  The first lock has the role of synchronizing the assignment of ids for productions:
   ```python
         self.lockPool[0].acquire()
         prod_id = len(self.qSize)
@@ -21,26 +18,21 @@ Sincronizare:
         self.lockPool[1].release()
   ```
   
-  Iar al doilea este folosit in scop asemanator pentru atribuirea de id pentru cosul de cumparaturi.
+  And the second is used for a similar purpose for assigning an ID to the shopping cart.
   
-  Structurile de date folosite:
-  * Liste:
-    * qSize: retine numarul de produse publicate de fiecare producator pentru a limita stock-ul la o 
-             valoare setat in constructorul clasei marketplace
-    * productPool: reprezinta totalitatea produselor disponibile
+  Data structures used:
+  * List:
+    * qSize: Remember the number of products published by each manufacturer to limit the stock to one
+             value set in the marketplace class constructor
+    * productPool: represents the totality of the available products
   * Dictionary:
-    * cartDic: atribuie fiecarui cos produsele pe care le contine
-    * producerDic: face legatura intre produs si producatorul care la publicat
+    * cartDic: assigns to each basket the products it contains
+    * producerDic: makes the connection between the product and the manufacturer who published it
 
-  Consider ca performanta implementarii este decenta, destul de rapida pentru a trece testele :)
-  Cred ca se poate optimiza in special pe numere mari reducand numarul de lock uri si folosind 
-  2 cozi deoarece structurile de python sunt thread-safe.
+  I think the implementation performance is decent, fast enough to pass the tests :)
+  I think it can be optimized especially in large numbers by reducing the number of locks and using
+  2 queues because python structures are thread-safe.
  
-***Implementare***
-  Implemenarea este completa conform cerintei.
-  Avand in vedere ca in acelasi timp am lucrat si la tema la SO in C, python a fost foarte intelegator.
-
-
-***Git***
-Repo-ul va fi privat pana la terminarea deadline-ului
-link: https://github.com/SexySparrow/asc_tema1
+***Implementation***
+  The implementation is complete as required.
+  Given that at the same time I worked on the topic in OS in C, python was very understanding.
