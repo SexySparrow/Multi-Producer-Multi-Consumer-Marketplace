@@ -32,7 +32,3 @@ Timing:
   I think the implementation performance is decent, fast enough to pass the tests :)
   I think it can be optimized especially in large numbers by reducing the number of locks and using
   2 queues because python structures are thread-safe.
- 
-***Implementation***
-  The implementation is complete as required.
-  Given that at the same time I worked on the topic in OS in C, python was very understanding.
